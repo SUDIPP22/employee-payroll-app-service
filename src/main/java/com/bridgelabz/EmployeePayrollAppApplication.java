@@ -1,5 +1,6 @@
 package com.bridgelabz;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 2021-12-06
  */
 @SpringBootApplication
+@EnableEncryptableProperties
 public class EmployeePayrollAppApplication {
 
     public static void main(String[] args) {
