@@ -31,7 +31,7 @@ public class EmployeePayrollControllerTest {
     @Test
     void givenEmployeeDetails_WhenAdded_ThenShouldAddEmployeeDetailsAndGenerateSuccessResponseAndMessage() {
         ResponseEntity<ResponseDto> successResponseMessage = new ResponseEntity<>
-                ((new ResponseDto(HttpStatus.CREATED, "EmployeeDetailsDto details are added successfully!!!")),
+                ((new ResponseDto(HttpStatus.CREATED, "Employee details are added successfully!!!")),
                         HttpStatus.CREATED);
         EmployeeDetailsDto employeeDetailsDto = new EmployeeDetailsDto();
         employeeDetailsDto.setFirstName("Sudip");
@@ -43,7 +43,7 @@ public class EmployeePayrollControllerTest {
         employeeDetailsDto.setJoiningDate("12/12/2021");
         when(employeePayrollService.addEmployeeEntities(employeeDetailsDto))
                 .thenReturn(new ResponseDto(HttpStatus.CREATED,
-                        "EmployeeDetailsDto details are added successfully!!!"));
+                        "Employee details are added successfully!!!"));
         ResponseEntity<ResponseDto> actualResponseMessage =
                 employeePayrollController.addEmployeeData(employeeDetailsDto);
         assertEquals(successResponseMessage, actualResponseMessage);
@@ -64,7 +64,7 @@ public class EmployeePayrollControllerTest {
     void givenEmployeeDetails_WhenUpdateEmployeeDetailsById_ThenShouldUpdateAndGenerateSuccessResponseAndMessage() {
         ResponseEntity<ResponseDto> successResponseMessage = new ResponseEntity<>
                 ((new ResponseDto(HttpStatus.ACCEPTED,
-                        "EmployeeDetailsDto details are updated successfully!!!")), HttpStatus.ACCEPTED);
+                        "Employee details are updated successfully!!!")), HttpStatus.ACCEPTED);
         int empId = 1;
         EmployeeDetailsDto employeeDetailsDto = new EmployeeDetailsDto();
         employeeDetailsDto.setFirstName("Sudip");
@@ -76,21 +76,21 @@ public class EmployeePayrollControllerTest {
         employeeDetailsDto.setJoiningDate("12/12/2021");
         when(employeePayrollService.updateEmployeeData(empId, employeeDetailsDto))
                 .thenReturn(new ResponseDto(HttpStatus.ACCEPTED,
-                "EmployeeDetailsDto details are updated successfully!!!"));
+                "Employee details are updated successfully!!!"));
         ResponseEntity<ResponseDto> actualResponseMessage =
                 employeePayrollController.updateEmployeeDetails(empId, employeeDetailsDto);
         assertEquals(successResponseMessage, actualResponseMessage);
     }
 
     @Test
-    void givenEmployeeDetails_WhenDeletedEmployeeDetailsById_ThenShouldUpdateAndGenerateSuccessResponseAndMessage() {
+    void givenEmployeeDetails_WhenDeletedEmployeeDetailsById_ThenShouldDeleteAndGenerateSuccessResponseAndMessage() {
         ResponseEntity<ResponseDto> successResponseMessage = new ResponseEntity<>
                 ((new ResponseDto(HttpStatus.ACCEPTED,
-                        "EmployeeDetailsDto details are deleted successfully!!!")), HttpStatus.ACCEPTED);
+                        "Employee details are deleted successfully!!!")), HttpStatus.ACCEPTED);
         int empId = 1;
         when(employeePayrollService.deleteEmployeeDataById(empId))
                 .thenReturn(new ResponseDto(HttpStatus.ACCEPTED,
-                        "EmployeeDetailsDto details are deleted successfully!!!"));
+                        "Employee details are deleted successfully!!!"));
         ResponseEntity<ResponseDto> actualResponseMessage =
                 employeePayrollController.deleteEmployeeDetails(empId);
         assertEquals(successResponseMessage, actualResponseMessage);

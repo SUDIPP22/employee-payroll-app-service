@@ -21,12 +21,12 @@ public class EmployeeDetailsDto {
     @Pattern(regexp = "^[A-Z][a-z]{2,}$", message = "Last name is invalid")
     private String lastName;
 
-    @Size(message = "Characters should be within 10 letters", max = 10)
+    @Size(message = "Gender should be within 10 letters", max = 10)
     private String gender;
 
     private double salary;
 
-    @Size(message = "Characters Should be within 50 letters", max = 50)
+    @Size(message = "Department name Should be within 50 letters", max = 50)
     private String department;
 
     @Size(message = "Notes should be within 150 letters", max = 150)

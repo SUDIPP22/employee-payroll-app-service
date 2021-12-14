@@ -30,13 +30,13 @@ public class Employee {
     @Column(name = "GENDER", nullable = false)
     private String gender;
 
-    @Column(name = "SALARY")
+    @Column(name = "SALARY", nullable = false)
     private double salary;
 
-    @Column(name = "DEPARTMENT")
+    @Column(name = "DEPARTMENT", nullable = false)
     private String department;
 
-    @Column(name = "NOTES")
+    @Column(name = "NOTES", nullable = false)
     private String notes;
 
     @Column(name = "START_DATE", nullable = false)
