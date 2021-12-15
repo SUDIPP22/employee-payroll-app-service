@@ -3,6 +3,7 @@ package com.bridgelabz.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -33,8 +34,10 @@ public class Employee {
     @Column(name = "SALARY")
     private double salary;
 
+    @ElementCollection
+    @CollectionTable(name = "employee_department", joinColumns = @JoinColumn(name = "id"))
     @Column(name = "DEPARTMENT")
-    private String department;
+    private List<String> departments;
 
     @Column(name = "NOTES")
     private String notes;
