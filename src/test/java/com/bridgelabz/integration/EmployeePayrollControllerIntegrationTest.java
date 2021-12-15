@@ -3,6 +3,7 @@ package com.bridgelabz.integration;
 import com.bridgelabz.controller.EmployeePayrollController;
 import com.bridgelabz.dto.EmployeeDetailsDto;
 import com.bridgelabz.dto.ResponseDto;
+import com.bridgelabz.entity.Employee;
 import com.bridgelabz.service.EmployeePayrollService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -48,6 +49,14 @@ public class EmployeePayrollControllerIntegrationTest {
     void getEmployeeDetailsTest() throws Exception {
         when(employeePayrollService.getAllEmployeeData()).thenReturn(new ArrayList<>());
         mockMvc.perform(MockMvcRequestBuilders.get("/employee/details"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void getEmployeeDataByIdTest() throws Exception {
+        Employee employee = new Employee();
+        when(employeePayrollService.findEmployeeDataById(1)).thenReturn(employee);
+        mockMvc.perform(MockMvcRequestBuilders.get("/employee/detail/1"))
                 .andExpect(status().isOk());
     }
 
