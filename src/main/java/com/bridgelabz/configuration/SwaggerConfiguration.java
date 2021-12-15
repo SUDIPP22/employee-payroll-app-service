@@ -32,7 +32,7 @@ public class SwaggerConfiguration {
                 .groupName("Employee Payroll")
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.bridgelabz"))
+                .apis(RequestHandlerSelectors.basePackage("com.bridgelabz.controller"))
                 .build();
     }
 

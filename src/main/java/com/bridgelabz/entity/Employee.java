@@ -21,25 +21,28 @@ public class Employee {
     @Column(name = "EMPLOYEE_ID")
     private int empId;
 
-    @Column(name = "FIRST_NAME", nullable = false)
+    @Column(name = "FIRST_NAME")
     private String firstName;
 
-    @Column(name = "LAST_NAME", nullable = false)
+    @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "GENDER", nullable = false)
+    @Column(name = "GENDER")
     private String gender;
 
-    @Column(name = "SALARY", nullable = false)
+    @Column(name = "SALARY")
     private double salary;
 
-    @Column(name = "DEPARTMENT", nullable = false)
+    @Column(name = "DEPARTMENT")
     private String department;
 
-    @Column(name = "NOTES", nullable = false)
+    @Column(name = "NOTES")
     private String notes;
 
-    @Column(name = "START_DATE", nullable = false)
+    @Column(name = "IMAGE")
+    private String imagePath;
+
+    @Column(name = "START_DATE")
     private String joiningDate;
 
 }
