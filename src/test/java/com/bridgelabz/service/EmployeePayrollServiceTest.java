@@ -43,8 +43,9 @@ public class EmployeePayrollServiceTest {
         employee1.setLastName("Panja");
         employee1.setGender("Male");
         employee1.setSalary(800000.00);
-        employee1.setDepartment("Electrical");
+        employee1.setDepartments(List.of("Electrical"));
         employee1.setNotes("Reliable,Adaptable,Self-Manageable,Communicative");
+        employee1.setImagePath("image1.jpg");
         employee1.setJoiningDate("10/12/2021");
         employeeEntityList.add(employee1);
 
@@ -53,8 +54,9 @@ public class EmployeePayrollServiceTest {
         employee2.setLastName("Williams");
         employee2.setGender("Male");
         employee2.setSalary(200000.00);
-        employee2.setDepartment("IT");
+        employee2.setDepartments(List.of("IT"));
         employee2.setNotes("Reliable,Communicative");
+        employee2.setImagePath("image2.jpg");
         employee2.setJoiningDate("11/12/2021");
         employeeEntityList.add(employee2);
 
@@ -80,8 +82,9 @@ public class EmployeePayrollServiceTest {
         employeeDetailsDto.setLastName("Panja");
         employeeDetailsDto.setGender("Male");
         employeeDetailsDto.setSalary(800000.00);
-        employeeDetailsDto.setDepartment("Electrical");
+        employeeDetailsDto.setDepartments(List.of("Electrical"));
         employeeDetailsDto.setNotes("Reliable,Adaptable,Self-Manageable,Communicative");
+        employeeDetailsDto.setImagePath("image1.jpg");
         employeeDetailsDto.setJoiningDate("12/12/2021");
 
         when(employeePayrollBuilder.buildEmployeeEntity(employeeDetailsDto, employee)).thenReturn(employee);
@@ -109,8 +112,9 @@ public class EmployeePayrollServiceTest {
         employeeDetailsDto.setLastName("Panja");
         employeeDetailsDto.setGender("Male");
         employeeDetailsDto.setSalary(500000.00);
-        employeeDetailsDto.setDepartment("Electrical");
+        employeeDetailsDto.setDepartments(List.of("Electrical"));
         employeeDetailsDto.setNotes("Reliable,Adaptable,Self-Manageable,Communicative");
+        employeeDetailsDto.setImagePath("image2.jpg");
         employeeDetailsDto.setJoiningDate("12/12/2021");
 
         Employee employee = new Employee();
@@ -119,13 +123,15 @@ public class EmployeePayrollServiceTest {
         employee.setLastName("Panja");
         employee.setGender("Male");
         employee.setSalary(800000.00);
-        employee.setDepartment("IT");
+        employee.setDepartments(List.of("IT"));
         employee.setNotes("Reliable,Adaptable,Self-Manageable,HardWorking");
+        employee.setImagePath("image1.jpg");
         employee.setJoiningDate("12/12/2021");
 
         when(employeePayrollRepository.findById(employeeId)).thenReturn(Optional.of(employee));
         employee.setSalary(employeeDetailsDto.getSalary());
-        employee.setDepartment(employeeDetailsDto.getDepartment());
+        employee.setDepartments(employeeDetailsDto.getDepartments());
+        employee.setImagePath(employeeDetailsDto.getImagePath());
         employee.setNotes(employeeDetailsDto.getNotes());
 
         when(employeePayrollBuilder.buildEmployeeEntity(employeeDetailsDto, employee)).thenReturn(employee);
@@ -135,7 +141,8 @@ public class EmployeePayrollServiceTest {
         verify(employeePayrollRepository, times(1)).save(employee);
         assertEquals(expectedResponse, actualResponse);
         assertEquals(employeeDetailsDto.getSalary(), employee.getSalary());
-        assertEquals(employeeDetailsDto.getDepartment(), employee.getDepartment());
+        assertEquals(employeeDetailsDto.getDepartments(), employee.getDepartments());
+        assertEquals(employeeDetailsDto.getImagePath(), employee.getImagePath());
         assertEquals(employeeDetailsDto.getNotes(), employee.getNotes());
     }
 
@@ -148,8 +155,9 @@ public class EmployeePayrollServiceTest {
         employeeDetailsDto.setLastName("Panja");
         employeeDetailsDto.setGender("Male");
         employeeDetailsDto.setSalary(500000.00);
-        employeeDetailsDto.setDepartment("Electrical");
+        employeeDetailsDto.setDepartments(List.of("Electrical"));
         employeeDetailsDto.setNotes("Reliable,Adaptable,Self-Manageable,Communicative");
+        employeeDetailsDto.setImagePath("image1.jpg");
         employeeDetailsDto.setJoiningDate("12/12/2021");
 
         when(employeePayrollRepository.findById(employeeId)).thenReturn(Optional.empty());
@@ -165,8 +173,9 @@ public class EmployeePayrollServiceTest {
         employee.setLastName("Panja");
         employee.setGender("Male");
         employee.setSalary(800000.00);
-        employee.setDepartment("IT");
+        employee.setDepartments(List.of("IT"));
         employee.setNotes("Reliable,Adaptable,Self-Manageable,HardWorking");
+        employee.setImagePath("image2.jpg");
         employee.setJoiningDate("12/12/2021");
 
         when(employeePayrollRepository.findById(employee.getEmpId())).thenReturn(Optional.of(employee));
@@ -185,8 +194,9 @@ public class EmployeePayrollServiceTest {
         employee.setLastName("Panja");
         employee.setGender("Male");
         employee.setSalary(800000.00);
-        employee.setDepartment("IT");
+        employee.setDepartments(List.of("IT"));
         employee.setNotes("Reliable,Adaptable,Self-Manageable,HardWorking");
+        employee.setImagePath("image3.jpg");
         employee.setJoiningDate("12/12/2021");
         when(employeePayrollRepository.findById(employee.getEmpId())).thenReturn(Optional.empty());
         assertThrows(EmployeeNotFoundException.class,

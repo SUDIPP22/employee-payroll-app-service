@@ -38,8 +38,9 @@ public class EmployeePayrollControllerTest {
         employeeDetailsDto.setLastName("Panja");
         employeeDetailsDto.setGender("Male");
         employeeDetailsDto.setSalary(800000.00);
-        employeeDetailsDto.setDepartment("Electrical");
+        employeeDetailsDto.setDepartments(List.of("Electrical"));
         employeeDetailsDto.setNotes("Reliable,Adaptable,Self-Manageable,Communicative");
+        employeeDetailsDto.setImagePath("image1.jpg");
         employeeDetailsDto.setJoiningDate("12/12/2021");
         when(employeePayrollService.addEmployeeEntities(employeeDetailsDto))
                 .thenReturn(new ResponseDto(HttpStatus.CREATED,
@@ -71,8 +72,9 @@ public class EmployeePayrollControllerTest {
         employeeDetailsDto.setLastName("Panja");
         employeeDetailsDto.setGender("Male");
         employeeDetailsDto.setSalary(800000.00);
-        employeeDetailsDto.setDepartment("Electrical");
+        employeeDetailsDto.setDepartments(List.of("Electrical"));
         employeeDetailsDto.setNotes("Reliable,Adaptable,Self-Manageable,Communicative");
+        employeeDetailsDto.setImagePath("image1.jpg");
         employeeDetailsDto.setJoiningDate("12/12/2021");
         when(employeePayrollService.updateEmployeeData(empId, employeeDetailsDto))
                 .thenReturn(new ResponseDto(HttpStatus.ACCEPTED,

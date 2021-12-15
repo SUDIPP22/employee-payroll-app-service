@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -38,9 +39,9 @@ public class EmployeePayrollControllerIntegrationTest {
         when(employeePayrollService.addEmployeeEntities(any())).thenReturn(new ResponseDto());
         mockMvc.perform(MockMvcRequestBuilders
                         .post("/employee/detail")
-                        .content("{\"firstName\":\"Alexa\",\"lastName\":\"Williams\",\"gender\":\"Female\"," +
-                                "\"salary\":500000.00,\"department\":\"CSE\",\"notes\":\"Adaptable\"," +
-                                "\"joiningDate\":\"12/19/2021\"}")
+                        .content("{\"empId\":1,\"firstName\":\"Sudip\",\"lastName\":\"Panja\",\"gender\":\"Male\"," +
+                                "\"salary\":800000,\"departments\":[\"JavaDeveloper\",\"Manager\"]," +
+                                "\"notes\":\"Reliable\",\"imagePath\":\"image1.jpg\",\"joiningDate\":\"12/16/2021\"}")
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isCreated());
     }
@@ -66,17 +67,18 @@ public class EmployeePayrollControllerIntegrationTest {
         employeeDetailsDto.setFirstName("Sudip");
         employeeDetailsDto.setLastName("Panja");
         employeeDetailsDto.setGender("Male");
-        employeeDetailsDto.setSalary(800000.00);
-        employeeDetailsDto.setDepartment("Electrical");
+        employeeDetailsDto.setSalary(600000.00);
+        employeeDetailsDto.setDepartments(List.of("Electrical"));
         employeeDetailsDto.setNotes("Reliable,Adaptable,Self-Manageable,Communicative");
+        employeeDetailsDto.setImagePath("image1.jpg");
         employeeDetailsDto.setJoiningDate("12/12/2021");
         int employeeId = 1;
         when(employeePayrollService.updateEmployeeData(employeeId, employeeDetailsDto)).thenReturn(new ResponseDto());
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/employee/detail/1")
-                        .content("{\"firstName\":\"Alexa\",\"lastName\":\"Williams\",\"gender\":\"Female\"," +
-                                "\"salary\":500000.00,\"department\":\"CSE\",\"notes\":\"Adaptable\"," +
-                                "\"joiningDate\":\"12/19/2021\"}")
+                        .content("{\"empId\":1,\"firstName\":\"Sudip\",\"lastName\":\"Panja\",\"gender\":\"Male\"," +
+                                "\"salary\":800000,\"departments\":[\"JavaDeveloper\",\"Manager\"]," +
+                                "\"notes\":\"Reliable\",\"imagePath\":\"image2.jpg\",\"joiningDate\":\"12/16/2021\"}")
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isAccepted());
     }
@@ -86,9 +88,9 @@ public class EmployeePayrollControllerIntegrationTest {
         when(employeePayrollService.deleteEmployeeDataById(1)).thenReturn(new ResponseDto());
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/employee/details/1")
-                        .content("{\"firstName\":\"Alexa\",\"lastName\":\"Williams\",\"gender\":\"Female\"," +
-                                "\"salary\":500000.00,\"department\":\"CSE\",\"notes\":\"Adaptable\"," +
-                                "\"joiningDate\":\"12/19/2021\"}")
+                        .content("{\"empId\":1,\"firstName\":\"Sudip\",\"lastName\":\"Panja\",\"gender\":\"Male\"," +
+                                "\"salary\":800000,\"departments\":[\"JavaDeveloper\",\"Manager\"]," +
+                                "\"notes\":\"Reliable\",\"imagePath\":\"image1.jpg\",\"joiningDate\":\"12/16/2021\"}")
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isAccepted());
     }
