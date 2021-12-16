@@ -39,7 +39,7 @@ public class EmployeePayrollControllerIntegrationTest {
         when(employeePayrollService.addEmployeeEntities(any())).thenReturn(new ResponseDto());
         mockMvc.perform(MockMvcRequestBuilders
                         .post("/employee/detail")
-                        .content("{\"empId\":1,\"firstName\":\"Sudip\",\"lastName\":\"Panja\",\"gender\":\"Male\"," +
+                        .content("{\"firstName\":\"Sudip\",\"lastName\":\"Panja\",\"gender\":\"Male\"," +
                                 "\"salary\":800000,\"departments\":[\"JavaDeveloper\",\"Manager\"]," +
                                 "\"notes\":\"Reliable\",\"imagePath\":\"image1.jpg\",\"joiningDate\":\"12/16/2021\"}")
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
@@ -76,7 +76,7 @@ public class EmployeePayrollControllerIntegrationTest {
         when(employeePayrollService.updateEmployeeData(employeeId, employeeDetailsDto)).thenReturn(new ResponseDto());
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/employee/detail/1")
-                        .content("{\"empId\":1,\"firstName\":\"Sudip\",\"lastName\":\"Panja\",\"gender\":\"Male\"," +
+                        .content("{\"firstName\":\"Sudip\",\"lastName\":\"Panja\",\"gender\":\"Male\"," +
                                 "\"salary\":800000,\"departments\":[\"JavaDeveloper\",\"Manager\"]," +
                                 "\"notes\":\"Reliable\",\"imagePath\":\"image2.jpg\",\"joiningDate\":\"12/16/2021\"}")
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
@@ -88,7 +88,7 @@ public class EmployeePayrollControllerIntegrationTest {
         when(employeePayrollService.deleteEmployeeDataById(1)).thenReturn(new ResponseDto());
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/employee/details/1")
-                        .content("{\"empId\":1,\"firstName\":\"Sudip\",\"lastName\":\"Panja\",\"gender\":\"Male\"," +
+                        .content("{\"firstName\":\"Sudip\",\"lastName\":\"Panja\",\"gender\":\"Male\"," +
                                 "\"salary\":800000,\"departments\":[\"JavaDeveloper\",\"Manager\"]," +
                                 "\"notes\":\"Reliable\",\"imagePath\":\"image1.jpg\",\"joiningDate\":\"12/16/2021\"}")
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
